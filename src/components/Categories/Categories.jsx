@@ -2,8 +2,7 @@ import React from 'react';
 
 import styles from './Categories.module.scss';
 
-export default function Categories() {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+export default function Categories({ categoryId, changeCategory }) {
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
@@ -11,8 +10,8 @@ export default function Categories() {
       <ul>
         {categories.map((value, index) => (
           <li
-            onClick={() => setActiveIndex(index)}
-            className={activeIndex === index ? styles.active : ''}
+            onClick={() => changeCategory(index)}
+            className={categoryId === index ? styles.active : ''}
             key={value}>
             {value}
           </li>
