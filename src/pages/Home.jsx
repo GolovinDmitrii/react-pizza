@@ -15,18 +15,21 @@ export default function Home() {
         setPizzas(json);
         setIsLoading(false);
       });
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <div className="content__top">
-        <Categories />
-        <Sort />
-      </div>
-      <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : pizzas.map((obj) => <PizzaBlock {...obj} key={obj.title} />)}
+      <div className="container">
+        <div className="content__top">
+          <Categories />
+          <Sort />
+        </div>
+        <h2 className="content__title">Все пиццы</h2>
+        <div className="content__items">
+          {isLoading
+            ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
+            : pizzas.map((obj) => <PizzaBlock {...obj} key={obj.title} />)}
+        </div>
       </div>
     </>
   );
