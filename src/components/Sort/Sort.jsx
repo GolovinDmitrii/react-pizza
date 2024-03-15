@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './Sort.module.scss';
+
 export default function Sort() {
   const [openPopap, setOpenPopap] = React.useState(false);
   const [selectedSort, setSelectedSort] = React.useState(0);
@@ -10,8 +12,8 @@ export default function Sort() {
   };
 
   return (
-    <div className="sort">
-      <div className="sort__label">
+    <div className={styles.sort}>
+      <div className={styles.sort__label}>
         <svg
           width="10"
           height="6"
@@ -27,13 +29,13 @@ export default function Sort() {
         <span onClick={() => setOpenPopap(!openPopap)}>{list[selectedSort]}</span>
       </div>
       {openPopap && (
-        <div className="sort__popup">
+        <div className={styles.sort__popup}>
           <ul>
             {list.map((name, index) => (
               <li
                 key={index}
                 onClick={() => onClickSort(index)}
-                className={selectedSort === index ? 'active' : ''}>
+                className={selectedSort === index ? styles.active : ''}>
                 {name}
               </li>
             ))}

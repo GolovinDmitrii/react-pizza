@@ -1,19 +1,24 @@
-import logoSvg from '../assets/img/pizza-logo.svg';
+import { Link } from 'react-router-dom';
+import styles from './Header.module.scss';
+import logoSvg from '../../assets/img/pizza-logo.svg';
+
 export default function Header() {
   return (
-    <div className="header">
-      <div className="container">
-        <div className="header__logo">
-          <img width="38" src={logoSvg} alt="Pizza logo" />
-          <div>
-            <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
+    <div className={styles.header}>
+      <div className={styles.container}>
+        <Link to="/">
+          <div className={styles.header__logo}>
+            <img width="38" src={logoSvg} alt="Pizza logo" />
+            <div>
+              <h1>React Pizza</h1>
+              <p>самая вкусная пицца во вселенной</p>
+            </div>
           </div>
-        </div>
-        <div className="header__cart">
-          <a href="/cart.html" className="button button--cart">
+        </Link>
+        <div className={styles.header__cart}>
+          <Link to="/cart" className={styles.button + ' ' + styles.buttonCart}>
             <span>520 ₽</span>
-            <div className="button__delimiter"></div>
+            <div className={styles.button__delimiter}></div>
             <svg
               width="18"
               height="18"
@@ -43,7 +48,7 @@ export default function Header() {
               />
             </svg>
             <span>3</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

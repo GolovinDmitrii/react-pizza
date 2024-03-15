@@ -1,21 +1,23 @@
 import React from 'react';
 
+import styles from './PizzaBlock.module.scss';
+
 export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const typesPizzas = ['тонкое', 'традиционное'];
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   return (
-    <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
-      <div className="pizza-block__selector">
+    <div className={styles.pizzaBlock}>
+      <img className={styles.pizzaBlock__image} src={imageUrl} alt="Pizza" />
+      <h4 className={styles.pizzaBlock__title}>{title}</h4>
+      <div className={styles.pizzaBlock__selector}>
         <ul>
           {types.map((type, index) => (
             <li
               onClick={() => {
                 setActiveType(type);
               }}
-              className={index === activeType ? 'active' : ''}
+              className={index === activeType ? styles.active : ''}
               key={type}>
               {typesPizzas[type]}
             </li>
@@ -27,16 +29,16 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
               onClick={() => {
                 setActiveSize(index);
               }}
-              className={index === activeSize ? 'active' : ''}
+              className={index === activeSize ? styles.active : ''}
               key={size}>
               {size} см.
             </li>
           ))}
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
-        <button className="button button--outline button--add">
+      <div className={styles.pizzaBlock__bottom}>
+        <div className={styles.pizzaBlock__price}>от {price} ₽</div>
+        <button className={styles.button + ' ' + styles.buttonOutline + ' ' + styles.buttonAdd}>
           <svg
             width="12"
             height="12"
