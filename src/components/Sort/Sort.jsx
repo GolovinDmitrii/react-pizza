@@ -2,15 +2,20 @@ import React from 'react';
 
 import styles from './Sort.module.scss';
 
-export default function Sort() {
+export default function Sort({ sortId, changeSort }) {
   const [openPopap, setOpenPopap] = React.useState(false);
-  const [selectedSort, setSelectedSort] = React.useState(0);
-  const list = ['популярности', 'цене', 'алфавиту'];
+  const list = [
+    { name: 'популярности / desc', sortProperty: 'rating' },
+    { name: 'популярности / asc', sortProperty: '-rating' },
+    { name: 'цене / desc', sortProperty: 'price' },
+    { name: 'цене / asc', sortProperty: '-price' },
+    { name: 'алфавиту / desc', sortProperty: 'title' },
+    { name: 'алфавиту / asc', sortProperty: '-title' },
+  ];
   const onClickSort = (index) => {
-    setSelectedSort(index);
     setOpenPopap(false);
+    changeSort(index);
   };
-
   return (
     <div className={styles.sort}>
       <div className={styles.sort__label}>
@@ -26,17 +31,17 @@ export default function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpenPopap(!openPopap)}>{list[selectedSort]}</span>
+        <span onClick={() => setOpenPopap(!openPopap)}>{sortId.name}</span>
       </div>
       {openPopap && (
         <div className={styles.sort__popup}>
           <ul>
-            {list.map((name, index) => (
+            {list.map((obj, index) => (
               <li
                 key={index}
-                onClick={() => onClickSort(index)}
-                className={selectedSort === index ? styles.active : ''}>
-                {name}
+                onClick={() => onClickSort(obj)}
+                className={sortId.sortProperty === obj.sortProperty ? styles.active : ''}>
+                {obj.name}
               </li>
             ))}
           </ul>
