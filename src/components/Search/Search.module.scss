@@ -1,0 +1,25 @@
+.root {
+  position: relative;
+  .input {
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #7b7b7b;
+    min-width: 300px;
+
+    &:focus {
+      border: 1px solid #1f1c1c;
+    }
+  }
+  .icon {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 18px;
+    height: 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
